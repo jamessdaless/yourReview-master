@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "408434674774",
+    "firebase_url": "https://finalyearproject-15e8e.firebaseio.com",
+    "project_id": "finalyearproject-15e8e",
+    "storage_bucket": "finalyearproject-15e8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408434674774:android:74635146fbfaf3a7",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.p4072709.yourreview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408434674774-lbfcm9nvtenk87ft50auhghlphoh3cra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVDAyLcDI0XZBmTX2uJ_iOa91gza41qZ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
