@@ -35,12 +35,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
 
-    //FirebaseDatabase database;
-    //DatabaseReference ref;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +44,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         auth = FirebaseAuth.getInstance();
         //progressDialog = new ProgressDialog(this);
-
 
         SignUp = (Button) findViewById(R.id.btnSUConfirm);
         Cancel = (Button) findViewById(R.id.btnSUCancel);

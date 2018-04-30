@@ -22,9 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_LOCATION = "location";
 
 
-    //public DatabaseHandler(Context context) {
-    //    super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    // }
 
     private static String CREATE_REVIEWS_TABLE = "CREATE TABLE "
             + REVIEWS_TABLE_NAME
@@ -39,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
+    /* creates tables */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_REVIEWS_TABLE);
@@ -49,12 +47,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return DATABASE_NAME;
     }
 
+    /* drops the tables if already built */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + REVIEWS_TABLE_NAME);
         onCreate(db);
     }
 
+    /* add new review to the database */
     void addReview(Review review) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -70,6 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d("Database", "NEW ENTRY ADDED");
     }
 
+    /* get all the reviews */
     public List<Review> getAllReviews() {
         List<Review> list = new ArrayList<Review>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -77,43 +78,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selectQuery = "SELECT * FROM " + REVIEWS_TABLE_NAME;
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-         /* if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(COL_ID);
-            int nameIndex = cursor.getColumnIndex(COL_NAME);
-            int locationIndex = cursor.getColumnIndex(COL_LOCATION);
-            int reviewIndex = cursor.getColumnIndex(COL_REVIEW);
-            int userIndex = cursor.getColumnIndex(COL_USER);
+          if (cursor.moveToFirst()) {
+              int idIndex = cursor.getColumnIndex(COL_ID);
+              int nameIndex = cursor.getColumnIndex(COL_NAME);
+              int locationIndex = cursor.getColumnIndex(COL_LOCATION);
+              int reviewIndex = cursor.getColumnIndex(COL_REVIEW);
+              int userIndex = cursor.getColumnIndex(COL_USER);
 
 
-            do {
-                Review review = new Review(
-                        cursor.getString(nameIndex),
-                        cursor.getString(locationIndex),
-                        cursor.getString(reviewIndex),
-                        cursor.getString(userIndex),
-                        cursor.getInt(idIndex)
-                );
+              do {
+                  Review review = new Review(
+                          cursor.getString(nameIndex),
+                          cursor.getString(locationIndex),
+                          cursor.getString(reviewIndex),
+                          cursor.getString(userIndex),
+                          cursor.getInt(idIndex)
+                  );
 
-                list.add(review);
-            } while (cursor.moveToNext()); */
-
-         if (cursor.moveToFirst()){
-             do {
-                 Review review = new Review();
-                 review.setId(Integer.parseInt(cursor.getString(0)));
-                 review.setName(cursor.getString(1));
-                 review.setReview(cursor.getString(2));
-                 review.setLocation(cursor.getString(3));
-                 review.setUser(cursor.getString(4));
-
-                 list.add(review);
-             } while (cursor.moveToNext());
-
-        }
+                  list.add(review);
+              } while (cursor.moveToNext());
+          }
 
         return list;
     }
 
+    /* delete review */
     public void deleteReview(Review review) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(REVIEWS_TABLE_NAME, COL_ID + "=?", new String[]{String.valueOf(review.getId())});
@@ -121,6 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    /* get all the reviews */
     public int getReviewCount() {
         String countQuery = "SELECT * FROM " + REVIEWS_TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();

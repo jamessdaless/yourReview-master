@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class NewReview extends AppCompatActivity {
-    private Button discard;
+    private Button discard, save;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,11 +16,10 @@ public class NewReview extends AppCompatActivity {
         setTitle("New Review");
 
         discard = (Button) findViewById(R.id.btnNRCancel);
+        save = (Button) findViewById(R.id.btnNRSave);
         DatabaseHelper db = new DatabaseHelper(this);
 
-        //inserting some default reviews
-        db.addReview(new Review("The Cribs @ Empire", "played all the classics, was great", "james_dales@hotmail.com", "Middlesborugh"));
-        db.addReview(new Review("Taylor Swift @ Manchester Arena", "bangers galore, she was outstanding", "james_dales@hotmail.com", "Manchester"));
+
 
         discard.setOnClickListener(new View.OnClickListener() {
             @Override

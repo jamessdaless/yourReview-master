@@ -46,9 +46,9 @@
     <EditText
         android:id="@+id/nrText"
         android:layout_width="308dp"
-        android:layout_height="282dp"
+        android:layout_height="209dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="214dp"
         android:ems="10"
         android:hint="Enter your review here"
         android:inputType="textMultiLine" />
@@ -67,8 +67,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="74dp"
+        android:layout_alignStart="@+id/nrText"
+        android:layout_alignLeft="@+id/nrText"
+        android:layout_marginTop="158dp"
         android:ems="10"
         android:hint="Location"
         android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txtReviewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/nrText"
+        android:layout_alignLeft="@+id/nrText"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="Review Name"
+        android:inputType="textPersonName" />
+
 </RelativeLayout>
