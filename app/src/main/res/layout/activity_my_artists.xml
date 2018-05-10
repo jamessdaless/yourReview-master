@@ -11,18 +11,46 @@
     tools:context="uk.ac.tees.p4072709.yourreview.MyArtists">
 
 
-    <android.support.v7.widget.SearchView
-        android:id= "@+id/MASearch"
-        android:layout_width= "match_parent"
+    <Button
+        android:id="@+id/btnMAHome"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="28dp"
+        android:text="Home" />
+
+    <Button
+        android:id="@+id/btnMASave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btnMAHome"
+        android:layout_alignLeft="@+id/btnMAHome"
+        android:layout_marginTop="106dp"
+        android:text="Save" />
+
+    <EditText
+        android:id="@+id/txtMAname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/btnMASave"
+        android:ems="10"
+        android:hint="Enter Artist Name"
+        android:inputType="textPersonName" />
 
     <ListView
-        android:id="@+id/list_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MASearch"
-        android:layout_margin="10dp"
+        android:id="@+id/artist_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="192dp" />
 
-    />
 </RelativeLayout>

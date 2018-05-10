@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_USER = "user";
     private static final String COL_LOCATION = "location";
     private static final String COL_ANAME = "name";
-
+    private static final String COL_AID = "id";
 
 
     private static String CREATE_REVIEWS_TABLE = "CREATE TABLE "
@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String CREATE_ARTISTS_TABLE = "CREATE TABLE "
             + ARTISTS_TABLE_NAME
-            + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "(" + COL_AID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COL_ANAME + " TEXT" + ");";
 
 
@@ -78,6 +78,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d("Database", "NEW ENTRY ADDED");
     }
 
+    public void addArtist(Artist artist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COL_AID, artist.getId());
+        values.put(COL_ANAME, artist.getArtistName());
+
+        db.insert(ARTISTS_TABLE_NAME, null, values);
+        db.close();
+
+        Log.d("Database", "NEW ENTRY ADDED");
+    }
     /* get all the reviews */
     public List<Review> getAllReviews() {
         List<Review> list = new ArrayList<Review>();
@@ -107,6 +119,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public List<Artist> getAllArtists() {
+        List<Artist> list = new ArrayList<Artist>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + ARTISTS_TABLE_NAME;
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            int anameIndex = cursor.getColumnIndex(COL_ANAME);
+
+            do {
+                Artist artist = new Artist (
+                        cursor.getString(anameIndex)
+                );
+                list.add(artist);
+            } while (cursor.moveToNext());
+        }
+        return list;
+    }
+
     /* delete review */
     public void deleteReview(Review review) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -128,5 +160,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void addReview(String s, String s1, String s2, String s3) {
         Log.d("Database", "NEW ENTRY ADDED");
+    }
+
+    public void addArtist(String s) {
+
     }
 }
