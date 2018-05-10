@@ -22,7 +22,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    // user details
+    /* user details */
     User(int id, String fn, String sn, String e) {
         this.id = id;
         this.forename = fn;

@@ -39,6 +39,7 @@ public class MyReviews extends AppCompatActivity {
         db.addReview(new Review("The Cribs @ Empire", "played all the classics, was great", "james_dales@hotmail.com", "Middlesborugh"));
         db.addReview(new Review("Taylor Swift @ Manchester Arena", "bangers galore, she was outstanding", "james_dales@hotmail.com", "Manchester"));
 
+        /* takes the user to the new review page */
         newReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,15 +50,16 @@ public class MyReviews extends AppCompatActivity {
             }
         });
 
+        /* lists all the reviews in a list view */
         List<Review> reviews = new ArrayList<>();
             reviews = db.getAllReviews();
             Log.d("REVIEW ARRAY", reviews.toString());
 
 
         for (Review r : reviews) {
-            //String log = "ID: " + r.getId() + ", Name: " + r.getName() + ", Review: " + r.getReview() + ", User: " +
-           //         r.getUser() + ", Location: " + r.getLocation();
-            //text = text + log;
+            String log = "ID: " + r.getId() + ", Name: " + r.getName() + ", Review: " + r.getReview() + ", User: " +
+                   r.getUser() + ", Location: " + r.getLocation();
+            text = text + log;
 
             reviewss = Arrays.copyOf(reviewss, reviewss.length + 1);
             reviewss[reviewss.length - 1] = "ID: " + r.getId() + ", Name: " + r.getName() + ", Review: " + r.getReview() + ", User: " +
@@ -65,11 +67,13 @@ public class MyReviews extends AppCompatActivity {
 
         }
 
+        /*creating the adapter to use the list view */
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, reviewss);
         ListView listView = (ListView) findViewById(R.id.reviews_list_view);
         listView.setAdapter(adapter);
 
 
+        /* returns the user to the home page */
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

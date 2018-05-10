@@ -1,74 +1,64 @@
 package uk.ac.tees.p4072709.yourreview;
 
-import java.io.Serializable;
 
-public class Review{
-    int id;
-    String name;
-    String review;
-    String user;
-    String location;
+public class Review {
+    private int id;
+    private String name;
+    private String review;
+    private String user;
+    private String location;
 
-    public Review(String string, String cursorString, String review, String user, int anInt) {
-
-    }
-
-    public Review(String name, String review, String user, String location) {
-        this.review = review;
-        this.user = user;
-        this.location = location;
-    }
-
-
-    public Review(int id, String name, String review, String user, String location) {
-        this.id = id;
-        this.name = name;
-        this.review = review;
-        this.user = user;
-        this.location = location;
-    }
-
-    public Review() {
+    public Review(String s, String s1, String s2, String middlesborugh) {
 
     }
+
+    public Review(int idd, String reviewName, String revieww, String userr, String locationn) {
+        this.id = idd;
+        this.name = reviewName;
+        this.review = revieww;
+        this.user = userr;
+        this.location = locationn;
+    }
+
+
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idd) {
+        this.id = idd;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String namee) {
+        this.name = namee;
     }
 
     public String getReview() {
         return review;
     }
 
-    public void setReview(String review) {
-        this.review = review;
+    public void setReview(String revieww) {
+        this.review = revieww;
     }
 
     public String getUser() {
         return user;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String userr) {
+        this.user = userr;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String locationn) {
+        this.location = locationn;
     }
 }

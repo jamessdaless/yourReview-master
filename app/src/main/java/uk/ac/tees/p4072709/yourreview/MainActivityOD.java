@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivityOD extends AppCompatActivity {
 
+
     private Button  btnChangePassword, btnConPass, btnSignOut, btnContinue;
     private EditText newPass, conNewPass;
     private ProgressBar progressBar;
@@ -35,6 +36,7 @@ public class MainActivityOD extends AppCompatActivity {
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        /* registering firebase */
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -51,26 +53,18 @@ public class MainActivityOD extends AppCompatActivity {
         btnContinue = (Button) findViewById(R.id.btnMAConToHome);
         btnSignOut = (Button) findViewById(R.id.btnMASignOut);
         btnConPass = (Button) findViewById(R.id.btnConPass);
-
-
         newPass = (EditText) findViewById(R.id.MANewPass);
         conNewPass = (EditText) findViewById(R.id.MAConNewPass);
-
-
         newPass.setVisibility(View.GONE);
         conNewPass.setVisibility(View.GONE);
-
         btnConPass.setVisibility(View.GONE);
-
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar4);
 
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
         }
 
-
-
+        /* once pressed the fields will be displayed for the changing of password */
         btnChangePassword.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -81,6 +75,7 @@ public class MainActivityOD extends AppCompatActivity {
             }
         });
 
+        /* confirming password */
         btnConPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,6 +114,7 @@ public class MainActivityOD extends AppCompatActivity {
         });
 
 
+        /* signs the user out */
         btnSignOut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -129,6 +125,7 @@ public class MainActivityOD extends AppCompatActivity {
             }
         });
 
+        /* takes the user to the home page */
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +136,7 @@ public class MainActivityOD extends AppCompatActivity {
 
     }
 
+    /* signs out the user */
     public void signOut() {
         auth.signOut();
     }

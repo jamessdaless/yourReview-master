@@ -28,13 +28,11 @@ import static android.R.attr.progress;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-
     private Button SignUp, Cancel;
     private EditText SUEmail, SUPass, SUCPass;
     private String email, pass, cpass;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +41,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_sign_up2);
 
         auth = FirebaseAuth.getInstance();
-        //progressDialog = new ProgressDialog(this);
-
         SignUp = (Button) findViewById(R.id.btnSUConfirm);
         Cancel = (Button) findViewById(R.id.btnSUCancel);
-
-
         SUEmail = (EditText) findViewById(R.id.SUEmail);
         SUPass = (EditText) findViewById(R.id.SUPassword);
         SUCPass = (EditText) findViewById(R.id.SUCPass);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
-
         SignUp.setOnClickListener(this);
         Cancel.setOnClickListener(this);
     }
@@ -66,19 +59,16 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
 
         if (TextUtils.isEmpty(email)) {
-            //no email
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (TextUtils.isEmpty(cpass)) {
-            //no confirmpass
             Toast.makeText(this, "Please confirm your password", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (pass.length() < 8) {
-            //password length
             Toast.makeText(getApplicationContext(), "Password too short, enter minimum 8 characters!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -90,6 +80,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         progressBar.setVisibility(View.VISIBLE);
 
+        /* checking to see if the details are correct */
         auth.createUserWithEmailAndPassword(email, cpass)
                 .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -102,6 +93,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         if (!task.isSuccessful()) {
                             Toast.makeText(SignUp.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
+
                         } else {
                             startActivity(new Intent(SignUp.this, SignInn.class));
                             finish();

@@ -15,13 +15,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class returnData extends AsyncTask <Void, Void, Void> {
+    /* setting the results to null */
     String results = "";
     String dataParsed = "";
     String singleParsed = "";
 
+    /* interacts with the api */
     @Override
     protected Void doInBackground(Void... voids) {
       try {
+          /*api call */
           URL url = new URL("http://ws.audioscrobbler.com/2.0/?method=artist.search&artist="+ Search.artist.getText() +"&api_key=0b50852873b33737ca23687f1fc44097&format=json");
           HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
           InputStream inputStream = httpURLConnection.getInputStream();
@@ -32,6 +35,7 @@ public class returnData extends AsyncTask <Void, Void, Void> {
               results = results + line;
           }
 
+          /* retriving the JSOn data */
          JSONArray JA = new JSONArray(results);
           for (int i=0; i < JA.length(); i++) {
               JSONObject JO = (JSONObject) JA.get(i);

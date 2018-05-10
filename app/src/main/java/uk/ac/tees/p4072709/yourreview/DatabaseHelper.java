@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_REVIEW = "review";
     private static final String COL_USER = "user";
     private static final String COL_LOCATION = "location";
+    private static final String COL_ANAME = "name";
 
 
 
@@ -31,6 +32,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COL_USER + " TEXT, "
             + COL_LOCATION + " TEXT" + ");";
 
+    private static String CREATE_ARTISTS_TABLE = "CREATE TABLE "
+            + ARTISTS_TABLE_NAME
+            + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COL_ANAME + " TEXT" + ");";
+
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -40,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_REVIEWS_TABLE);
+        db.execSQL(CREATE_ARTISTS_TABLE);
         Log.d("Database", "Database Created");
     }
 
@@ -55,13 +63,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /* add new review to the database */
-    void addReview(Review review) {
+    public void addReview(Review review) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(COL_NAME, review.getName());
         values.put(COL_LOCATION, review.getLocation());
-        values.put(COL_NAME, review.getName());
+        values.put(COL_REVIEW, review.getReview());
         values.put(COL_USER, review.getUser());
 
         db.insert(REVIEWS_TABLE_NAME, null, values);
@@ -85,20 +93,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
               int reviewIndex = cursor.getColumnIndex(COL_REVIEW);
               int userIndex = cursor.getColumnIndex(COL_USER);
 
-
               do {
                   Review review = new Review(
-                          cursor.getString(nameIndex),
+                          cursor.getInt(idIndex),
                           cursor.getString(locationIndex),
                           cursor.getString(reviewIndex),
                           cursor.getString(userIndex),
-                          cursor.getInt(idIndex)
+                          cursor.getString(nameIndex)
                   );
-
                   list.add(review);
               } while (cursor.moveToNext());
           }
-
         return list;
     }
 
@@ -110,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /* get all the reviews */
+    /* counts the reviews in the db */
     public int getReviewCount() {
         String countQuery = "SELECT * FROM " + REVIEWS_TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -121,4 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public void addReview(String s, String s1, String s2, String s3) {
+        Log.d("Database", "NEW ENTRY ADDED");
+    }
 }

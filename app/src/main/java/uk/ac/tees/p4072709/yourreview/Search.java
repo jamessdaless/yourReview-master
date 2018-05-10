@@ -20,13 +20,14 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        /* assigning buttons */
         Home = (Button) findViewById(R.id.btnHome);
         search = (Button) findViewById(R.id.btnSearch);
         clear = (Button) findViewById(R.id.btnClear);
         results = (TextView) findViewById(R.id.txtResults);
         artist = (EditText) findViewById(R.id.txtSearch);
 
-    //return to home
+        /* return to home */
         Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,7 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        /* uses the returnData class to gain information back from the api */
         search.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -46,6 +48,7 @@ public class Search extends AppCompatActivity {
 
         });
 
+        /* clears the results */
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

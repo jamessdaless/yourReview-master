@@ -22,70 +22,70 @@ public class Home extends AppCompatActivity {
         Button Search = (Button) findViewById(R.id.btnHSearch);
         Button myArtists = (Button) findViewById(R.id.btnHMyArtist);
 
+        /* my account button process */
         myAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent myAccountIntent = new Intent(Home.this,
                         MainActivityOD.class);
                 startActivity(myAccountIntent);
             }
         });
 
+        /* social media button process */
         SocialMedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent mySMIntent = new Intent(Home.this,
                         SocialMedia.class);
                 startActivity(mySMIntent);
             }
         });
 
+        /* location button process */
         Location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent myLocationIntent = new Intent(Home.this,
                         Location.class);
                 startActivity(myLocationIntent);
             }
         });
 
+        /* my reviewsbutton process */
         MyReviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent myReviewIntent = new Intent(Home.this,
                         MyReviews.class);
                 startActivity(myReviewIntent);
             }
         });
 
+        /* global reviews button process */
         globalReviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent globalReviewsIntent = new Intent(Home.this,
                         GlobalReviews.class);
                 startActivity(globalReviewsIntent);
             }
         });
 
+        /*search artists button process */
         Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent SearchIntent = new Intent(Home.this,
                         Search.class);
                 startActivity(SearchIntent);
             }
         });
 
+        /* my artists button process */
         myArtists.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start NewActivity.class
                 Intent myAccountIntent = new Intent(Home.this,
                         MyArtists.class);
                 startActivity(myAccountIntent);

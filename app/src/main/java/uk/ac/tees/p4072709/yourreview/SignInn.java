@@ -53,6 +53,7 @@ public class SignInn extends AppCompatActivity {
             }
         });
 
+        /* user sign in */
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +72,7 @@ public class SignInn extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                //authenticate user
+                /* authenticate user */
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignInn.this, new OnCompleteListener<AuthResult>() {
                             @Override

@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button signup = (Button) findViewById(R.id.btnSignUp);
         Button signin = (Button) findViewById(R.id.btnSignIn);
+
+        /* sign in button to take user to the sign in page */
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /* takes the user to the registration page */
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
